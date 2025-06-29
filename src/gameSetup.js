@@ -5,7 +5,7 @@ const GameBoard = () => {
   for (let i = 0; i < capacity; i++) {
     const bucket = buckets[i];
     for (let j = 0; j < 10; j++) {
-      bucket.push([j, 'O']);
+      bucket.push([j, ' ']);
     }
   }
 
