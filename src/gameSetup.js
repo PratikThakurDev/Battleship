@@ -93,4 +93,4 @@ const shipPlacement = (buckets) => {
   return buckets;
 };
 
-export { shipPlacement, player1Board };
+export { shipPlacement, GameBoard};

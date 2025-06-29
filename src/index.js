@@ -1,6 +1,7 @@
-import { shipPlacement,player1Board } from "./gameSetup";
+import { shipPlacement,GameBoard } from "./gameSetup";
 
-const board = shipPlacement(player1Board);
+const board = shipPlacement(GameBoard);
+
 if (!Array.isArray(board)) {
   console.error("shipPlacement() did not return a valid board.");
   process.exit(1);
