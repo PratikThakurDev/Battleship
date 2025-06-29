@@ -1,4 +1,4 @@
-import { receiveAttack } from "./playingLogic";
+import { receiveAttack,changePlayerTurn } from "./playingLogic";
 import { GameBoard,shipPlacement } from "./gameSetup";
 
 test('receiveAttack returns "hit" and updates cell to H', () => {
@@ -29,4 +29,10 @@ test('receiveAttack returns null if coordinates are invalid', () => {
   const board = GameBoard();
   const result = receiveAttack('15,2', board); // out-of-bounds row
   expect(result).toBe(null);
+});
+
+test('changePlayerTurn toggles between players', () => {
+  activePlayer = 'player1';
+  expect(changePlayerTurn()).toBe('player2');
+  expect(changePlayerTurn()).toBe('player1');
 });

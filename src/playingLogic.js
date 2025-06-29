@@ -24,4 +24,13 @@ const receiveAttack = (coordinates, board) => {
   return null;
 };
 
-export { receiveAttack };
+const changePlayerTurn = () => {
+  if (activePlayer === 'player1') {
+    activePlayer = 'player2';
+  } else if (activePlayer === 'player2') {
+    activePlayer = 'player1';
+  }
+  return activePlayer;
+};
+
+export { receiveAttack ,changePlayerTurn};
