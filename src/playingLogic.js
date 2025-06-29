@@ -1,7 +1,6 @@
 import { GameBoard, shipPlacement } from './gameSetup';
 
 const receiveAttack = (coordinates, board) => {
-  let hit = 0;
   const [row, column] = coordinates.split(',').map(Number);
   if (row < 0 || row >= 10 || column < 0 || column >= 10) {
     return null;
@@ -11,7 +10,7 @@ const receiveAttack = (coordinates, board) => {
     if (bucket[i][0] === column) {
       if (bucket[i][1] === 'X') {
         bucket[i][1] = 'H';
-        hit++;
+
         return 'hit';
       } else if (bucket[i][1] === ' ') {
         bucket[i][1] = 'M';
@@ -21,7 +20,12 @@ const receiveAttack = (coordinates, board) => {
       }
     }
   }
-  return null;
+};
+
+const checkWin = () => {
+  if (hitByPlayer1 === 17 || hitByPlayer2 === 17) {
+    return true;
+  } else return false;
 };
 
 const changePlayerTurn = () => {
@@ -33,4 +37,4 @@ const changePlayerTurn = () => {
   return activePlayer;
 };
 
-export { receiveAttack ,changePlayerTurn};
+export { receiveAttack, changePlayerTurn };
