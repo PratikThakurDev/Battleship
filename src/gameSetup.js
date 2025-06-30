@@ -8,7 +8,6 @@ const GameBoard = () => {
       bucket.push([j, ' ']);
     }
   }
-
   return buckets;
 };
 
@@ -22,9 +21,6 @@ function hash(key) {
 
   return hashCode % 10;
 }
-
-const player1Board = GameBoard();
-const player2Board = GameBoard();
 
 const shipPlacement = (buckets) => {
   const placed = new Set();
@@ -93,4 +89,7 @@ const shipPlacement = (buckets) => {
   return buckets;
 };
 
-export { shipPlacement, GameBoard};
+const player1Board = shipPlacement(GameBoard());
+const player2Board = shipPlacement(GameBoard());
+
+export { shipPlacement, GameBoard, player1Board, player2Board };
