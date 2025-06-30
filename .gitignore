@@ -1,0 +1,27 @@
+# Node dependencies
+/node_modules/
+
+# Output from Webpack
+/dist/
+
+# Jest test coverage
+/coverage/
+
+# Babel cache
+.babel.cache.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional, only ignore if personal)
+/.vscode/
+
+# Env files (if using in the future)
+.env
+.env.* 

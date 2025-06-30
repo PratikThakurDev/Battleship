@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Battleship Game</title>
+  
+<script defer src="main.js"></script></head>
+<body>
+  <h1>Battleship: Player vs Computer</h1>
+
+  <div class="button-row">
+    <button id="restart-btn">🔄 Restart Game</button>
+    <button id="reshuffle-btn">🎯 Change Ship Placement</button>
+  </div>
+
+  <div class="boards">
+    <!-- Player Board -->
+    <div>
+      <div class="label">Your Board</div>
+      <div id="player-board" class="board"></div>
+    </div>
+
+    <!-- Enemy Board -->
+    <div>
+      <div class="label">Enemy Board</div>
+      <div id="enemy-board" class="board"></div>
+    </div>
+  </div>
+
+  <div id="status"></div>
+  <div id="status" class="status-message"></div>
+  
+</body>
+</html>
