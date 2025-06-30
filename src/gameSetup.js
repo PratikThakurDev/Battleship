@@ -89,7 +89,6 @@ const shipPlacement = (buckets) => {
   return buckets;
 };
 
-const player1Board = shipPlacement(GameBoard());
-const player2Board = shipPlacement(GameBoard());
 
-export { shipPlacement, GameBoard, player1Board, player2Board };
+
+export { shipPlacement, GameBoard };

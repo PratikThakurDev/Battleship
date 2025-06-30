@@ -1,3 +1,5 @@
+import { shipPlacement,GameBoard } from './gameSetup';
+
 const visualBoard = (board) => {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
@@ -11,4 +13,21 @@ const visualBoard = (board) => {
   return board;
 };
 
-export { visualBoard };
+const toShowShips = (board) => {
+  const buckets = board
+  const playerBoard = document.querySelector('#player-board');
+  const cells = playerBoard.querySelectorAll('.cell');
+  for (let i = 0; i < buckets.length; i++) {
+    for (let j = 0; j < buckets.length; j++) {
+      if (buckets[i][j][1] === 'X') {
+        cells.forEach((cell) => {
+          if (cell.dataset.row == i && cell.dataset.column == j) {
+            cell.classList.add('ship');
+          }
+        });
+      }
+    }
+  }
+};
+
+export { visualBoard, toShowShips };
