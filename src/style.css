@@ -1,5 +1,18 @@
+:root {
+  --bg: #121212;
+  --panel: #1e1e1e;
+  --primary: #03dac6;
+  --secondary: #bb86fc;
+  --text: #f1f1f1;
+  --hit: #ff5252;
+  --miss: #757575;
+  --ship: #4caf50;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,42 +20,88 @@ body {
 }
 
 h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.button-row {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #9f5efc;
+}
+button {
+  background-color: #bb86fc;
+  color: white;
 }
 
 .boards {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+  justify-content: center;
 }
 
 .board {
+  background-color: var(--panel);
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(10, 30px);
   grid-template-rows: repeat(10, 30px);
   gap: 2px;
+  border-radius: 8px;
 }
 
 .cell {
   width: 30px;
   height: 30px;
-  background-color: #d0e1f9;
-  border: 1px solid #666;
+  background-color: #2c2c2c;
+  border: 1px solid #444;
   cursor: pointer;
-}
-
-.cell.hit {
-  background-color: red;
+  border-radius: 2px;
 }
 
 .cell.miss {
-  background-color: lightgray;
+  background-color: var(--miss);
 }
 
 .cell.ship {
-  background-color: #4caf50;
+  background-color: var(--ship);
+}
+
+.cell.hit {
+  background-color: var(--hit);
 }
 
 .label {
   text-align: center;
   margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+#status {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+.status-message {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-align: center;
 }

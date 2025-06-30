@@ -1,13 +1,11 @@
-import { act } from 'react';
+
 import {
   GameBoard,
-  shipPlacement,
-  player1Board,
-  player2Board,
+  shipPlacement
 } from './gameSetup';
 
 const receiveAttack = (coordinates, board) => {
-  const [row, column] = coordinates.split(',').map(Number);
+  const [row, column] = coordinates
   if (row < 0 || row >= 10 || column < 0 || column >= 10) {
     return null;
   }
@@ -44,51 +42,10 @@ const changePlayerTurn = (activePlayer) => {
   return activePlayer;
 };
 
-const gameSequence = (player1Board, player2Board) => {
-  let hitByPlayer1 = 0;
-  let hitByPlayer2 = 0;
-  let activePlayer = 'player1';
-  while (!checkWin(hitByPlayer1, hitByPlayer2)) {
-    let attack;
-    while (!validMove) {
-      if (activePlayer === 'player1') {
-        attack = receiveAttack('2,4', player2Board); // TODO: Replace with input from UI
-      } else {
-        attack = receiveAttack(compMoves(), player1Board);
-      }
-
-      if (attack === 'you already played') {
-        continue; // retry same player
-      }
-
-      validMove = true;
-    }
-    if (activePlayer === 'player1') {
-      attack = receiveAttack('2,4', player2Board);
-      if (attack === 'you already played') return;
-      if (attack === 'hit') hitByPlayer1++;
-      if (checkWin(hitByPlayer1, hitByPlayer2)) {
-        return `${activePlayer} wins!`;
-        //disable clicks
-      }
-      activePlayer = changePlayerTurn(activePlayer);
-    } else if (activePlayer === 'player2') {
-      const attack = receiveAttack(compMoves(), player1Board); //will make input coordinates by player after html and css
-      if (attack === 'you already played') return;
-      if (attack === 'hit') hitByPlayer2++;
-      if (checkWin(hitByPlayer1, hitByPlayer2)) {
-        return `${activePlayer} wins!`;
-        //disable clicks
-      }
-      activePlayer = changePlayerTurn(activePlayer);
-    }
-  }
-};
-
 const compMoves = () => {
   const row = Math.floor(Math.random() * 10);
   const column = Math.floor(Math.random() * 10);
-  return `${row},${column}`;
+  return [row,column];
 };
 
-export { receiveAttack, changePlayerTurn, checkWin, gameSequence };
+export { receiveAttack, changePlayerTurn, checkWin, compMoves};
