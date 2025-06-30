@@ -1,4 +1,4 @@
-import { receiveAttack,changePlayerTurn } from "./playingLogic";
+import { receiveAttack,changePlayerTurn ,gameSequence} from "./playingLogic";
 import { GameBoard,shipPlacement } from "./gameSetup";
 
 test('receiveAttack returns "hit" and updates cell to H', () => {
@@ -36,3 +36,4 @@ test('changePlayerTurn toggles between players', () => {
   expect(changePlayerTurn()).toBe('player2');
   expect(changePlayerTurn()).toBe('player1');
 });
+

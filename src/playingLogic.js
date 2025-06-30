@@ -1,3 +1,4 @@
+import { act } from 'react';
 import {
   GameBoard,
   shipPlacement,
@@ -34,7 +35,7 @@ const checkWin = (hitByPlayer1, hitByPlayer2) => {
   } else return false;
 };
 
-const changePlayerTurn = () => {
+const changePlayerTurn = (activePlayer) => {
   if (activePlayer === 'player1') {
     activePlayer = 'player2';
   } else if (activePlayer === 'player2') {
@@ -48,25 +49,46 @@ const gameSequence = (player1Board, player2Board) => {
   let hitByPlayer2 = 0;
   let activePlayer = 'player1';
   while (!checkWin(hitByPlayer1, hitByPlayer2)) {
+    let attack;
+    while (!validMove) {
+      if (activePlayer === 'player1') {
+        attack = receiveAttack('2,4', player2Board); // TODO: Replace with input from UI
+      } else {
+        attack = receiveAttack(compMoves(), player1Board);
+      }
+
+      if (attack === 'you already played') {
+        continue; // retry same player
+      }
+
+      validMove = true;
+    }
     if (activePlayer === 'player1') {
-      const attack = receiveAttack('2,4', player2Board);
+      attack = receiveAttack('2,4', player2Board);
       if (attack === 'you already played') return;
       if (attack === 'hit') hitByPlayer1++;
       if (checkWin(hitByPlayer1, hitByPlayer2)) {
+        return `${activePlayer} wins!`;
         //disable clicks
       }
-      changePlayerTurn();
+      activePlayer = changePlayerTurn(activePlayer);
     } else if (activePlayer === 'player2') {
-      const attack = receiveAttack('2,4', player1Board); //will make input coordinates by player after html and css
+      const attack = receiveAttack(compMoves(), player1Board); //will make input coordinates by player after html and css
       if (attack === 'you already played') return;
       if (attack === 'hit') hitByPlayer2++;
       if (checkWin(hitByPlayer1, hitByPlayer2)) {
         return `${activePlayer} wins!`;
         //disable clicks
       }
-      changePlayerTurn();
+      activePlayer = changePlayerTurn(activePlayer);
     }
   }
+};
+
+const compMoves = () => {
+  const row = Math.floor(Math.random() * 10);
+  const column = Math.floor(Math.random() * 10);
+  return `${row},${column}`;
 };
 
 export { receiveAttack, changePlayerTurn, checkWin, gameSequence };
