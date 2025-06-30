@@ -42,10 +42,7 @@ const changePlayerTurn = (activePlayer) => {
   return activePlayer;
 };
 
-const compMoves = () => {
-  const row = Math.floor(Math.random() * 10);
-  const column = Math.floor(Math.random() * 10);
-  return [row,column];
-};
 
-export { receiveAttack, changePlayerTurn, checkWin, compMoves};
+
+
+export { receiveAttack, changePlayerTurn, checkWin};
